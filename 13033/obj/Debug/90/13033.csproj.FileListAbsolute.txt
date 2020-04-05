@@ -269,3 +269,4 @@ C:\Users\konst\source\repos\13033\13033\obj\Debug\90\res\values\arrays.xml
 C:\Users\konst\source\repos\13033\13033\obj\Debug\90\res\values-gr\strings.xml
 C:\Users\konst\source\repos\13033\13033\obj\Debug\90\res\drawable\error.png
 C:\Users\konst\source\repos\13033\13033\obj\Debug\90\res\values-gr\arrays.xml
+C:\Users\konst\source\repos\13033\13033\obj\Debug\90\android\src\crc6434c22f6691d408ff\SmsReceiver.java

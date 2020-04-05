@@ -1,1 +1,28 @@
-<resources><string name="app_name">13033</string><string name="action_Info">Πληροφορίες</string><string name="action_Lang">Γλώσσα</string><string name="Surname">Επίθετο</string><string name="Name">Όνομα</string><string name="Address">Διεύθυνση</string><string name="RememberSW">Αυτόματη συμπλήρωση πεδίων</string><string name="SelectedText">Λόγος μετακκίνησης:</string><string name="ConfirmError">΄Ώχ... Από ότι φαίνεται σου ξέφυγε κάποιο πεδίο ή ξέχασες να επιλέξεις λόγο μετακκίνησης. Παρακαλώ βεβαιωθείτε ότι συμπληρώσατε τα πάντα σωστά</string><string name="Error">Σφάλμα</string><string name="OK">Εντάξει</string><string name="InfoTitle">Σχετικά με εμάς</string><string name="InfoMessage">Αυτή η εφαρμογή δημιουργήθηκε για να βοηθήσει ηλικειωμένους ανθρώπους που τους είναι δύσκολο να χειριστούν την τεχνολογία.\n\nΤα δεδομένα σας αποθηκεύονται στην συσκευή σας και σβήνονται με την διαγραφή της εφαρμογής.\nΗ εφαρμογή δεν επικοινωνεί με το ιντερνετ και το μόνο δικαίωμα που απατεί είναι η αποστολή μηνυμάτων για κατανοητούς λόγους.\nΜπορείτε να βρείτε τον ανοιχτό κώδικα με τις ενημερώσεις στο GitHub και επίσης υπάρχει video στο youtube "How to make your own 13033 app"\n\nΔημιουργός Κωνσταντίνος Παπανάγνου.\n\nΔεν υπόκειται σε πνευματικά δικαιώματα - Εφαρμογή ανοιχτού κώδικα</string><string name="Confirmation">Επιβεβαίωση</string><string name="Proceed">Συνέχεια</string><string name="Abort">Απόρριψη</string><string name="Aborted">Απορρίφθηκε</string><string name="SmsNotSupportedException">Δεν υποστηρίζονται τα SMS από την συσκευή</string><string name="Attention">Προσοχή</string><string name="AttentionMessage">Μπορείτε πλέον να βγείτε. Το μύνημα αυτό είναι έγκυρο μέχρι τις  </string><string name="MessagesOverload">Πρόκειται να υπερβείτε το ανώτατο επιτρεπτό όριο απεσταλμένων μηνυμάτων στο 13033 για μία μέρα. Είστε σίγουροι ότι θέλετε να συνεχίσετε;</string></resources>
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <string name="app_name">13033</string>
+  <string name="action_Info">Πληροφορίες</string>
+  <string name="action_Lang">Γλώσσα</string>
+  <string name="Surname">Επίθετο</string>
+  <string name="Name">Όνομα</string>
+  <string name="Address">Διεύθυνση</string>
+  <string name="RememberSW">Αυτόματη συμπλήρωση πεδίων</string>
+  <string name="SelectedText">Λόγος μετακκίνησης:</string>
+  <string name="ConfirmError">΄Ώχ... Από ότι φαίνεται σου ξέφυγε κάποιο πεδίο ή ξέχασες να επιλέξεις λόγο μετακκίνησης. Παρακαλώ βεβαιωθείτε ότι συμπληρώσατε τα πάντα σωστά</string>
+  <string name="Error">Σφάλμα</string>
+  <string name="OK">Εντάξει</string>
+
+  <string name="InfoTitle">Σχετικά με εμάς</string>
+  <string name="InfoMessage">Αυτή η εφαρμογή δημιουργήθηκε για να βοηθήσει ηλικειωμένους ανθρώπους που τους είναι δύσκολο να χειριστούν την τεχνολογία.\n\nΤα δεδομένα σας αποθηκεύονται στην συσκευή σας και σβήνονται με την διαγραφή της εφαρμογής.\nΗ εφαρμογή δεν επικοινωνεί με το ιντερνετ και το μόνο δικαίωμα που απατεί είναι η αποστολή μηνυμάτων για κατανοητούς λόγους.\nΜπορείτε να βρείτε τον ανοιχτό κώδικα με τις ενημερώσεις στο GitHub και επίσης υπάρχει video στο youtube "How to make your own 13033 app"\n\nΔημιουργός Κωνσταντίνος Παπανάγνου.\n\nΔεν υπόκειται σε πνευματικά δικαιώματα - Εφαρμογή ανοιχτού κώδικα</string>
+  <string name="Confirmation">Επιβεβαίωση</string>
+  <string name="Proceed">Συνέχεια</string>
+  <string name="Abort">Απόρριψη</string>
+  <string name="Aborted">Απορρίφθηκε</string>
+  <string name="SmsNotSupportedException">Δεν υποστηρίζονται τα SMS από την συσκευή</string>
+
+  <string name="Attention">Προσοχή</string>
+  <string name="AttentionMessage">Μπορείτε πλέον να βγείτε. Το μύνημα αυτό είναι έγκυρο μέχρι τις  </string>
+  <string name="MessagesOverload">Πρόκειται να υπερβείτε το ανώτατο επιτρεπτό όριο απεσταλμένων μηνυμάτων στο 13033 για μία μέρα. Είστε σίγουροι ότι θέλετε να συνεχίσετε;</string>
+
+  <string name="SmsFailed">Ώχ, κάτι πήγε στραβά και δεν στάλθηκε το sms σας.</string>
+</resources>

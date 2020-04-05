@@ -23,4 +23,6 @@
   <string name="Attention">Προσοχή</string>
   <string name="AttentionMessage">Μπορείτε πλέον να βγείτε. Το μύνημα αυτό είναι έγκυρο μέχρι τις  </string>
   <string name="MessagesOverload">Πρόκειται να υπερβείτε το ανώτατο επιτρεπτό όριο απεσταλμένων μηνυμάτων στο 13033 για μία μέρα. Είστε σίγουροι ότι θέλετε να συνεχίσετε;</string>
+
+  <string name="SmsFailed">Ώχ, κάτι πήγε στραβά και δεν στάλθηκε το sms σας.</string>
 </resources>

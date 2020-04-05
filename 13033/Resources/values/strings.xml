@@ -22,4 +22,6 @@
   <string name="Attention">Attention</string>
   <string name="AttentionMessage">You can now go out. Note that this message will be valid until: </string>
   <string name="MessagesOverload">You are about to exceed the maximum amount of messages sent to 13033 within 24 hours. Are you sure you want to proceed?</string>
+
+  <string name="SmsFailed">Oops, something went wrong and your sms wasn\'t sent</string>
 </resources>

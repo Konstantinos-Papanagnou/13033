@@ -14,6 +14,8 @@ using Android.Content;
 using Android.Content.PM;
 using Android.Content.Res;
 using Xamarin.Essentials;
+using Android.Telephony;
+using Android;
 
 namespace _13033
 {
@@ -68,6 +70,8 @@ namespace _13033
 
         int ReasonSelected;
 
+        SmsReceiver receiver;
+
         public object LocaleManager { get; private set; }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -85,6 +89,9 @@ namespace _13033
             RememberSW.Checked = Prefs.GetRemember();
             HandleEvents();
             SetViews();
+
+            receiver = new SmsReceiver(this);
+            RegisterReceiver(receiver, new IntentFilter("SENT"));
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -116,14 +123,6 @@ namespace _13033
 
             return base.OnOptionsItemSelected(item);
         }
-
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
-        {
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-
         private void FindViews()
         {
             Surname = FindViewById<EditText>(Resource.Id.SurnameET);
@@ -175,7 +174,48 @@ namespace _13033
         }
 
         private void Send_Click(object sender, EventArgs e)
-        {          
+        {
+            RequestPermissions();
+        }
+
+        public void SendText(string final)
+        {
+            Android.Support.V7.App.AlertDialog confirmationDialog = new Android.Support.V7.App.AlertDialog.Builder(this)
+    .SetTitle(Resource.String.Confirmation).SetMessage(final)
+    .SetPositiveButton(Resource.String.Proceed, (object o, DialogClickEventArgs args) => {
+        try
+        {
+
+            
+            var sms = SmsManager.Default;
+            PendingIntent pi = PendingIntent.GetBroadcast(this, 0, new Intent("SENT"), 0);
+            sms.SendTextMessage("13033", null, final, pi, null);
+        }
+        catch (FeatureNotSupportedException)
+        {
+            Toast.MakeText(this, Resource.String.SmsNotSupportedException, ToastLength.Long).Show();
+        }
+        catch (Exception ex)
+        {
+            Android.Support.V7.App.AlertDialog error = new Android.Support.V7.App.AlertDialog.Builder(this).SetTitle(Resource.String.Error).SetMessage(ex.Message).SetIcon(Resource.Drawable.Error).Show();
+        }
+    })
+    .SetNegativeButton(Resource.String.Abort, (object o, DialogClickEventArgs args) => { Toast.MakeText(this, Resource.String.Aborted, ToastLength.Long).Show(); }).Show();
+        }
+        private void RequestPermissions()
+        {
+            if (Android.Support.V4.App.ActivityCompat.CheckSelfPermission(this, Manifest.Permission.SendSms) != (int)Permission.Granted)
+            {
+                Android.Support.V4.App.ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.SendSms }, 0);
+            }
+            else
+            {
+                BeginSend();
+            }
+        }
+
+        private void BeginSend()
+        {
             Model.Model Message = new Model.Model(ReasonSelected, Surname.Text, Name.Text, Address.Text);
             if (!Message.ConfirmMessage())
             {
@@ -203,39 +243,31 @@ namespace _13033
                 else SendText(final);
             }
             else
-            { 
+            {
                 texts.SetDay(DateTime.Now.ToShortDateString());
                 SendText(final);
             }
-
-
-
         }
 
-        public void SendText(string final)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
         {
-            Android.Support.V7.App.AlertDialog confirmationDialog = new Android.Support.V7.App.AlertDialog.Builder(this)
-    .SetTitle(Resource.String.Confirmation).SetMessage(final)
-    .SetPositiveButton(Resource.String.Proceed, (object o, DialogClickEventArgs args) => {
-        try
-        {
-            var message = new SmsMessage(final, new[] { "13033" });
-            Sms.ComposeAsync(message).Wait(2000);
-            texts.AddToCount();
-            Android.Support.V7.App.AlertDialog assist = new Android.Support.V7.App.AlertDialog.Builder(this)
-            .SetTitle(Resource.String.Attention).SetMessage(Resources.GetString(Resource.String.AttentionMessage) + " " + DateTime.Now.AddHours(2).ToString("hh:mm")).SetPositiveButton(Resource.String.OK, (object o, DialogClickEventArgs arg) => { }).Show();
+            if (requestCode == 0)
+            {
+                // Check if the only required permission has been granted
+                if (grantResults.Length == 1 && grantResults[0] == Permission.Granted)
+                {
+                    Toast.MakeText(this, "Permission Granted", ToastLength.Long).Show();
+                    BeginSend();
+                }
+                else
+                {
+                    Toast.MakeText(this, "Permission Not Granted!", ToastLength.Long).Show();
+                }
+            }
+            else
+            {
+                base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
         }
-        catch (FeatureNotSupportedException)
-        {
-            Toast.MakeText(this, Resource.String.SmsNotSupportedException, ToastLength.Long).Show();
-        }
-        catch (Exception ex)
-        {
-            Android.Support.V7.App.AlertDialog error = new Android.Support.V7.App.AlertDialog.Builder(this).SetTitle(Resource.String.Error).SetMessage(ex.Message).SetIcon(Resource.Drawable.Error).Show();
-        }
-    })
-    .SetNegativeButton(Resource.String.Abort, (object o, DialogClickEventArgs args) => { Toast.MakeText(this, Resource.String.Aborted, ToastLength.Long).Show(); }).Show();
-        }
-
     }
 }

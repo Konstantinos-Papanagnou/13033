@@ -70,6 +70,7 @@
     <Compile Include="SharedPrefs\LanguagePrefs.cs" />
     <Compile Include="SharedPrefs\RememberPrefs.cs" />
     <Compile Include="SharedPrefs\TextsPerDay.cs" />
+    <Compile Include="SmsReceiver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
