@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">13033</string>
+    <string name="action_Info">Info</string>
+  <string name="Surname">Surname</string>
+  <string name="action_Lang">Language</string>
+  <string name="Name">Name</string>
+  <string name="Address">Address</string>
+  <string name="RememberSW">Remember inputs</string>
+  <string name="SelectedText">Reason Selected:</string>
+  <string name="ConfirmError">Oops... It seems like you have missed a field or forgot to choose your transportation reason. Please make sure you have everything correct.</string>
+  <string name="Error">Error</string>
+  <string name="OK">OK</string>
+
+  <string name="InfoTitle">Abous Us</string>
+  <string name="InfoMessage">This is an app created for the elderly people who are experiencing difficulties with technology.\n\nNote that your data will be saved locally to your phone and will be deleted when you uninstall the application.\nThe app is not making any internet connections and the only permission it requires is sms sending.\nYou can view the open source code with the updates on GitHub and there is also a video on youtube of me developing the app "How to make your own 13033 app".\n\nCreated by Konstantinos Pap.\n\nNo Copyrights -- Open Source Project</string>
+  <string name="Confirmation">Confirmation</string>
+  <string name="Proceed">Proceed</string>
+  <string name="Abort">Abort</string>
+  <string name="Aborted">Aborted</string>
+  <string name="SmsNotSupportedException">Not Supported</string>
+
+  <string name="Attention">Attention</string>
+  <string name="AttentionMessage">You can now go out. Note that this message will be valid until: </string>
+  <string name="MessagesOverload">You are about to exceed the maximum amount of messages sent to 13033 within 24 hours. Are you sure you want to proceed?</string>
+</resources>
