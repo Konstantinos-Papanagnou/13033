@@ -1,11 +1,1 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<resources>
-  <string-array name="Description">
-    <item>Μετάβαση σε Φαρμακείο ή Γιατρό</item>
-    <item>Μετάβαση Σούπερ Μάρκετ</item>
-    <item>Μετάβαση σε τράπεζα</item>
-    <item>Κίνηση για παροχή βοήθειας σε ανθρώπους που βρίσκονται σε ανάγκη</item>
-    <item>Μετάβαση σε τελετή</item>
-    <item>Σωματική άσκηση σε εξωτερικό χώρο ή κίνηση με κατοικίδιο ζώο</item>
-  </string-array>
-</resources>
+<resources><string-array name="Description"><item>Μετάβαση σε Φαρμακείο ή Γιατρό</item><item>Μετάβαση Σούπερ Μάρκετ</item><item>Μετάβαση σε τράπεζα</item><item>Κίνηση για παροχή βοήθειας σε ανθρώπους που βρίσκονται σε ανάγκη</item><item>Μετάβαση σε τελετή</item><item>Σωματική άσκηση σε εξωτερικό χώρο ή κίνηση με κατοικίδιο ζώο</item></string-array></resources>

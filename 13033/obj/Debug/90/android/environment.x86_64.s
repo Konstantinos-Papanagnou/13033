@@ -2,8 +2,8 @@
 	.section	.rodata..L.str.1,"aMS",@progbits,1
 	.type	.L.str.1, @object
 .L.str.1:
-	.asciz	"com.companyname.x_13033"
-	.size	.L.str.1, 24
+	.asciz	"com.PapIndustries.App_13033"
+	.size	.L.str.1, 28
 	.section	.data.application_config,"aw",@progbits
 	.type	application_config, @object
 	.p2align	3
@@ -69,7 +69,7 @@ mono_aot_mode_name:
 	.section	.rodata..L.str.8,"aMS",@progbits,1
 	.type	.L.str.8, @object
 .L.str.8:
-	.asciz	"017bc367-1488-4231-aead-17f5da1d50d8"
+	.asciz	"5a0ecf18-ae83-4cec-90db-4b8a617e5773"
 	.size	.L.str.8, 37
 	.section	.rodata..L.str.9,"aMS",@progbits,1
 	.type	.L.str.9, @object

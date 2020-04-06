@@ -1,9 +1,5 @@
 C:\Users\konst\source\repos\13033\13033\bin\Debug\13033.dll
 C:\Users\konst\source\repos\13033\13033\bin\Debug\13033.pdb
-C:\Users\konst\source\repos\13033\13033\bin\Debug\com.companyname.x_13033.apk
-C:\Users\konst\source\repos\13033\13033\bin\Debug\com.companyname.x_13033.aab
-C:\Users\konst\source\repos\13033\13033\bin\Debug\com.companyname.x_13033-Signed.aab
-C:\Users\konst\source\repos\13033\13033\bin\Debug\com.companyname.x_13033-Signed.apk
 C:\Users\konst\source\repos\13033\13033\obj\Debug\90\MonoAndroid,Version=v9.0.AssemblyAttributes.cs
 C:\Users\konst\source\repos\13033\13033\obj\Debug\90\build.props
 C:\Users\konst\source\repos\13033\13033\obj\Debug\90\adb.props
@@ -35,10 +31,7 @@ C:\Users\konst\source\repos\13033\13033\obj\Debug\90\R.cs.flag
 C:\Users\konst\source\repos\13033\13033\obj\Debug\90\13033.csproj.CoreCompileInputs.cache
 C:\Users\konst\source\repos\13033\13033\obj\Debug\90\13033.dll
 C:\Users\konst\source\repos\13033\13033\obj\Debug\90\13033.pdb
-C:\Users\konst\source\repos\13033\13033\obj\Debug\90\android\bin\com.companyname.x_13033.apk
 C:\Users\konst\source\repos\13033\13033\obj\Debug\90\android\bin\base.zip
-C:\Users\konst\source\repos\13033\13033\obj\Debug\90\android\bin\com.companyname.x_13033.aab
-C:\Users\konst\source\repos\13033\13033\obj\Debug\90\android\bin\com.companyname.x_13033.apks
 C:\Users\konst\source\repos\13033\13033\obj\Debug\90\res\layout\activity_main.xml
 C:\Users\konst\source\repos\13033\13033\obj\Debug\90\res\layout\content_main.xml
 C:\Users\konst\source\repos\13033\13033\obj\Debug\90\res\values\colors.xml
@@ -270,3 +263,13 @@ C:\Users\konst\source\repos\13033\13033\obj\Debug\90\res\values-gr\strings.xml
 C:\Users\konst\source\repos\13033\13033\obj\Debug\90\res\drawable\error.png
 C:\Users\konst\source\repos\13033\13033\obj\Debug\90\res\values-gr\arrays.xml
 C:\Users\konst\source\repos\13033\13033\obj\Debug\90\android\src\crc6434c22f6691d408ff\SmsReceiver.java
+C:\Users\konst\source\repos\13033\13033\bin\Debug\com.PapIndustries.App_13033.apk
+C:\Users\konst\source\repos\13033\13033\bin\Debug\com.PapIndustries.App_13033.aab
+C:\Users\konst\source\repos\13033\13033\bin\Debug\com.PapIndustries.App_13033-Signed.aab
+C:\Users\konst\source\repos\13033\13033\bin\Debug\com.PapIndustries.App_13033-Signed.apk
+C:\Users\konst\source\repos\13033\13033\obj\Debug\90\android\bin\com.PapIndustries.App_13033.apk
+C:\Users\konst\source\repos\13033\13033\obj\Debug\90\android\bin\com.PapIndustries.App_13033.aab
+C:\Users\konst\source\repos\13033\13033\obj\Debug\90\android\bin\com.PapIndustries.App_13033.apks
+C:\Users\konst\source\repos\13033\13033\obj\Debug\90\res\drawable\icon.png
+C:\Users\konst\source\repos\13033\13033\obj\Debug\90\res\layout\alertdialog.xml
+C:\Users\konst\source\repos\13033\13033\obj\Debug\90\android\src\com\papindustries\app_13033\R.java

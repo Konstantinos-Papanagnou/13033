@@ -12,7 +12,7 @@
   <string name="OK">OK</string>
 
   <string name="InfoTitle">Abous Us</string>
-  <string name="InfoMessage">This is an app created for the elderly people who are experiencing difficulties with technology.\n\nNote that your data will be saved locally to your phone and will be deleted when you uninstall the application.\nThe app is not making any internet connections and the only permission it requires is sms sending.\nYou can view the open source code with the updates on GitHub and there is also a video on youtube of me developing the app "How to make your own 13033 app".\n\nCreated by Konstantinos Pap.\n\nNo Copyrights -- Open Source Project</string>
+  <string name="InfoMessage">This is an app created for people who are experiencing difficulties with technology.\n\nNote that your data will be saved locally to your phone and will be deleted when you uninstall the application. In addition to that, data you provide will not be distributed to any Third Party applications or services.\nThe app is not making any internet connections and the only permission it requires is sms sending.\nYou can view the open source code with the updates on GitHub and there is also a video on youtube of me developing the app "How to make your own 13033 app".\n\nCreated by Konstantinos Pap.\n\nNo Copyrights -- Open Source Project\n\n #stayhome #staysafe</string>
   <string name="Confirmation">Confirmation</string>
   <string name="Proceed">Proceed</string>
   <string name="Abort">Abort</string>
@@ -24,4 +24,10 @@
   <string name="MessagesOverload">You are about to exceed the maximum amount of messages sent to 13033 within 24 hours. Are you sure you want to proceed?</string>
 
   <string name="SmsFailed">Oops, something went wrong and your sms wasn\'t sent</string>
+
+  <string name="AlertTitle">Do you wish to be alerted before the timer expires?</string>
+  <string name="AlertMessage">Define how much time before SMS expiration you want to be alarmed</string>
+  <string name="mins">Minutes</string>
+  <string name="Hour">Hour</string>
+  <string name="Left">Left</string>
 </resources>
