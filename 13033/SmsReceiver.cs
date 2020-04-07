@@ -37,6 +37,8 @@ namespace _13033
             {
                
                 case Result.Ok:
+                    if (Context == null)
+                        break;
                     TextsPerDay texts = new TextsPerDay(Context);
                     texts.AddToCount();
                     sentAt = DateTime.Now.AddHours(3);
@@ -52,6 +54,8 @@ namespace _13033
                     }).Show();
                     break;
                 default:
+                    if (Context == null)
+                        break;
                     assist = new Android.Support.V7.App.AlertDialog.Builder(Context)
                    .SetTitle(Resource.String.Error).SetIcon(Resource.Drawable.Error).SetMessage(Resource.String.SmsFailed).SetPositiveButton(Resource.String.OK, (object o, DialogClickEventArgs arg) => { }).Show();
                     break;
