@@ -1,21 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿using Android.Content;
 
 namespace _13033.SharedPrefs
 {
     public class LanguagePrefs
     {
-        private const string LANGUAGE_PREF = "LanguagePrefs";
-        private const string SELECTEDLANG_KEY = "SelectedLang";
+        private const string LANGUAGE_PREF = "LanguagePrefs";//file name
+        private const string SELECTEDLANG_KEY = "SelectedLang";//key entry that holds the lang
         private readonly ISharedPreferences prefs;
         public LanguagePrefs(Context context)
         {
@@ -24,12 +14,12 @@ namespace _13033.SharedPrefs
 
         public string GetLanguageCode()
         {
-            return prefs.GetString(SELECTEDLANG_KEY, "gr");
+            return prefs.GetString(SELECTEDLANG_KEY, "el");
         }
 
         public void SetLanguageCode(string code)
         {
-            using(ISharedPreferencesEditor edit = prefs.Edit())
+            using (ISharedPreferencesEditor edit = prefs.Edit())
             {
                 edit.PutString(SELECTEDLANG_KEY, code);
                 edit.Apply();

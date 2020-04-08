@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-
-namespace _13033.Model
+﻿namespace _13033.Model
 {
-    public class CodeMeta: Java.Lang.Object
+    /// <summary>
+    /// Class that contains all the necessary data for our transportation reasons
+    /// </summary>
+    public class CodeMeta : Java.Lang.Object
     {
         public int Code { get; set; }
         public string Description { get; set; }

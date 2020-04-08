@@ -1,31 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿using Android.Content;
 
 namespace _13033.SharedPrefs
 {
     public class RememberPrefs
     {
-        public const string FileName = "RememberPrefs";
-        public const string Remember = "Remember";
-        public const string Surname = "Surname";
-        public const string Name = "Name";
-        public const string Address = "Address";
+        public const string FileName = "RememberPrefs";//filename
+        public const string Remember = "Remember";//key that holds the value remember
+        public const string Surname = "Surname";// key that holds the value surname
+        public const string Name = "Name";//key that holds the value name
+        public const string Address = "Address";//key that holds the value address
 
         ISharedPreferences Prefs;
         public RememberPrefs(Context Context)
         {
             Prefs = Context.GetSharedPreferences(FileName, FileCreationMode.Private);
         }
-
+        /// <summary>
+        /// Toggles in between remember 
+        /// </summary>
+        /// <param name="remember">The value to put</param>
         public void ToggleRemember(bool remember)
         {
             using ISharedPreferencesEditor editor = Prefs.Edit();
@@ -51,7 +44,12 @@ namespace _13033.SharedPrefs
         {
             return Prefs.GetString(Address, string.Empty);
         }
-
+        /// <summary>
+        /// Sets and saves all the data
+        /// </summary>
+        /// <param name="surname"></param>
+        /// <param name="name"></param>
+        /// <param name="address"></param>
         public void SetData(string surname, string name, string address)
         {
             using ISharedPreferencesEditor editor = Prefs.Edit();

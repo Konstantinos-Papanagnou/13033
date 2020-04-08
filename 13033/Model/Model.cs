@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-
-namespace _13033.Model
+﻿namespace _13033.Model
 {
+    /// <summary>
+    /// Model of the message to send
+    /// </summary>
     public class Model
     {
         public int Code { get; set; }
         public string Surname { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
-
+        /// <summary>
+        /// Confirm that all the inputs are correct
+        /// </summary>
+        /// <returns>true if everything checks out</returns>
         public bool ConfirmMessage()
         {
             if (Code == 0)
@@ -31,7 +25,10 @@ namespace _13033.Model
                 return false;
             return true;
         }
-
+        /// <summary>
+        /// Get the final message
+        /// </summary>
+        /// <returns>The completed message to be send</returns>
         public string GetMessage()
         {
             return Code.ToString() + " " + Surname + " " + Name + " " + Address;

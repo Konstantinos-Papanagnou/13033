@@ -1,22 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿using Android.Content;
 
 namespace _13033.SharedPrefs
 {
+    /// <summary>
+    /// Handles the maximum limit
+    /// </summary>
     public class TextsPerDay
     {
-        public const string TextsPref = "TextsPerDay";
-        public const string Day = "Day";
-        public const string Count = "Count";
+        public const string TextsPref = "TextsPerDay";//filename
+        public const string Day = "Day";//Key that holds the last day something has been sent
+        public const string Count = "Count";//holds the count of messages sent at the day specified above
         ISharedPreferences Prefs;
         public TextsPerDay(Context Context)
         {
@@ -39,7 +32,9 @@ namespace _13033.SharedPrefs
         {
             return Prefs.GetInt(Count, 0);
         }
-
+        /// <summary>
+        /// Clears the count each time the day changes
+        /// </summary>
         private void ClearCount()
         {
             using ISharedPreferencesEditor editor = Prefs.Edit();

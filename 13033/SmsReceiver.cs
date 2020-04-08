@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using _13033.SharedPrefs;
 using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
+using Android.Provider;
 using Android.Views;
 using Android.Widget;
-using _13033.SharedPrefs;
-using Android.Provider;
-using Android.Support.Design.Widget;
+using System;
 
 namespace _13033
 {
@@ -20,7 +13,7 @@ namespace _13033
     public class SmsReceiver : BroadcastReceiver
     {
         readonly Context Context;
-        int time = 0;
+        int time = 0; // index
         readonly int[] AvailableTime = { 15, 30, 60 };
         View view;
         DateTime sentAt;
@@ -29,21 +22,27 @@ namespace _13033
         {
             this.Context = Context;
         }
-        public SmsReceiver() { }
+        public SmsReceiver() { } // We need a default constructor if the system decides to call on this receiver
         public override void OnReceive(Context context, Intent intent)
         {
             Android.Support.V7.App.AlertDialog assist;
             switch (ResultCode)
             {
-               
+                //if we receive an OK status it means that our sms has been sent successfully
                 case Result.Ok:
+                    //Make sure that this is the manually initialized from the activity Receiver and not the system initialized one
                     if (Context == null)
                         break;
+                    //Grab the file to add the sms sent
                     TextsPerDay texts = new TextsPerDay(Context);
                     texts.AddToCount();
+                    //set the timer to 3 hours ahead
                     sentAt = DateTime.Now.AddHours(3);
+                    //Notify the user that his request has been successfully sent to 13033
                     assist = new Android.Support.V7.App.AlertDialog.Builder(Context)
-                    .SetTitle(Resource.String.Attention).SetMessage(Context.Resources.GetString(Resource.String.AttentionMessage) + " " + sentAt.ToString("hh:mm")).SetPositiveButton(Resource.String.OK, (object o, DialogClickEventArgs arg) => {
+                    .SetTitle(Resource.String.Attention).SetMessage(Context.Resources.GetString(Resource.String.AttentionMessage) + " " + sentAt.ToString("hh:mm")).SetPositiveButton(Resource.String.OK, (object o, DialogClickEventArgs arg) =>
+                    {
+                        //ask the user if he wants to be alerted
                         view = ((Activity)Context).LayoutInflater.Inflate(Resource.Layout.AlertDialog, null);
                         ListView list = view.FindViewById<ListView>(Resource.Id.AlertList);
                         list.Adapter = new ArrayAdapter<string>(Context, Android.Resource.Layout.SimpleListItem1, new string[] { "15 " + Context.Resources.GetString(Resource.String.mins), "30 " + Context.Resources.GetString(Resource.String.mins), "1 " + Context.Resources.GetString(Resource.String.Hour) });
@@ -54,8 +53,10 @@ namespace _13033
                     }).Show();
                     break;
                 default:
+                    //Make sure that this is the manually initialized from the activity Receiver and not the system initialized one
                     if (Context == null)
                         break;
+                    //Alert the user that something went wrong
                     assist = new Android.Support.V7.App.AlertDialog.Builder(Context)
                    .SetTitle(Resource.String.Error).SetIcon(Resource.Drawable.Error).SetMessage(Resource.String.SmsFailed).SetPositiveButton(Resource.String.OK, (object o, DialogClickEventArgs arg) => { }).Show();
                     break;
