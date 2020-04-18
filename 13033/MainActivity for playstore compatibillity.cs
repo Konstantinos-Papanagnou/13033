@@ -7,9 +7,10 @@ using Android.Content;
 using Android.Content.PM;
 using Android.Content.Res;
 using Android.OS;
+using Android.Provider;
 using Android.Support.Design.Widget;
 using Android.Support.V7.App;
-using Android.Telephony;
+//using Android.Telephony;
 using Android.Views;
 using Android.Widget;
 using System;
@@ -83,7 +84,7 @@ namespace _13033
 
         int ReasonSelected;
 
-        SmsReceiver receiver; //The receiver that gets triggered when the sms is successfully sent
+       // SmsReceiver receiver; //The receiver that gets triggered when the sms is successfully sent
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -102,8 +103,8 @@ namespace _13033
             HandleEvents();
             SetViews();
             //Configure the receiver to get triggered
-            receiver = new SmsReceiver(this);
-            RegisterReceiver(receiver, new IntentFilter("SENT"));
+           // receiver = new SmsReceiver(this);
+           // RegisterReceiver(receiver, new IntentFilter("SENT"));
         }
         /// <summary>
         /// Sets up the Options menu at the top right of the toolbar
@@ -209,8 +210,9 @@ namespace _13033
 
         private void Send_Click(object sender, EventArgs e)
         {
+            BeginSend();
             //When we click the send button we need to make sure that we have the required permissions
-            RequestPermissions();
+            //RequestPermissions();
         }
 
         public void SendText(string final)
@@ -224,10 +226,13 @@ namespace _13033
         {
             //Send the sms 
 
-            var sms = SmsManager.Default;
+            //var sms = SmsManager.Default;
             //We need to create a Pending Intent with the Intent SENT in order to call our receiver because the method SendTextMessage only accepts PendingIntent
-            PendingIntent pi = PendingIntent.GetBroadcast(this, 0, new Intent("SENT"), 0);
-            sms.SendTextMessage("13033", null, final, pi, null);
+            //PendingIntent pi = PendingIntent.GetBroadcast(this, 0, new Intent("SENT"), 0);
+            //sms.SendTextMessage("13033", null, final, pi, null);
+            var message = new SmsMessage(final, new[] { "13033" });
+            Sms.ComposeAsync(message).Wait();
+            EnableTimer();
         }
         catch (FeatureNotSupportedException)
         {
@@ -241,18 +246,18 @@ namespace _13033
     })
     .SetNegativeButton(Resource.String.Abort, (object o, DialogClickEventArgs args) => { Toast.MakeText(this, Resource.String.Aborted, ToastLength.Long).Show(); }).Show();
         }
-        private void RequestPermissions()
-        {
-            //Request the permissions if not already granted
-            if (Android.Support.V4.App.ActivityCompat.CheckSelfPermission(this, Manifest.Permission.SendSms) != (int)Permission.Granted)
-            {
-                Android.Support.V4.App.ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.SendSms }, 0);
-            }
-            else
-            {
-                BeginSend();
-            }
-        }
+        //private void RequestPermissions()
+        //{
+        //    //Request the permissions if not already granted
+        //    //if (Android.Support.V4.App.ActivityCompat.CheckSelfPermission(this, Manifest.Permission.SendSms) != (int)Permission.Granted)
+        //    //{
+        //    //    Android.Support.V4.App.ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.SendSms }, 0);
+        //    //}
+        //    //else
+        //    //{
+        //        BeginSend();
+        //    //}
+        //}
 
         private void BeginSend()
         {
@@ -300,24 +305,73 @@ namespace _13033
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
         {
-            if (requestCode == 0)
-            {
-                //Check if the only required permission has been granted
-                if (grantResults.Length == 1 && grantResults[0] == Permission.Granted)
-                {
-                    Toast.MakeText(this, "Permission Granted", ToastLength.Long).Show();
-                    //Begin the process
-                    BeginSend();
-                }
-                else
-                {
-                    Toast.MakeText(this, "Permission Not Granted!", ToastLength.Long).Show();
-                }
-            }
-            else
-            {
+            //if (requestCode == 0)
+            //{
+            //    //Check if the only required permission has been granted
+            //    if (grantResults.Length == 1 && grantResults[0] == Permission.Granted)
+            //    {
+            //        Toast.MakeText(this, "Permission Granted", ToastLength.Long).Show();
+            //        //Begin the process
+            //        BeginSend();
+            //    }
+            //    else
+            //    {
+            //        Toast.MakeText(this, "Permission Not Granted!", ToastLength.Long).Show();
+            //    }
+            //}
+            //else
+            //{
                 base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            }
+            //}
+        }
+
+        int time = 0; // index
+        readonly int[] AvailableTime = { 15, 30, 60 };
+        View view;
+        DateTime sentAt;
+        Android.Support.V7.App.AlertDialog alertDialog;
+
+        public void EnableTimer()
+        {
+            //Grab the file to add the sms sent
+            TextsPerDay texts = new TextsPerDay(this);
+            texts.AddToCount();
+            //set the timer to 3 hours ahead
+            sentAt = DateTime.Now.AddHours(3);
+            //Notify the user that his request has been successfully sent to 13033
+            Android.Support.V7.App.AlertDialog assist = new Android.Support.V7.App.AlertDialog.Builder(this)
+            .SetTitle(Resource.String.Attention).SetMessage(Resources.GetString(Resource.String.AttentionMessage) + " " + sentAt.ToString("hh:mm")).SetPositiveButton(Resource.String.OK, (object o, DialogClickEventArgs arg) =>
+            {
+                        //ask the user if he wants to be alerted
+                        view = LayoutInflater.Inflate(Resource.Layout.AlertDialog, null);
+                ListView list = view.FindViewById<ListView>(Resource.Id.AlertList);
+                list.Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, new string[] { "15 " + Resources.GetString(Resource.String.mins), "30 " + Resources.GetString(Resource.String.mins), "1 " + Resources.GetString(Resource.String.Hour) });
+                list.ItemClick += List_ItemClick;
+                alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this).SetTitle(Resource.String.AlertTitle)
+                .SetMessage(Resource.String.AlertMessage).SetView(view)
+                .SetNegativeButton(Resource.String.Abort, (object o, DialogClickEventArgs e) => { }).Show();
+            }).Show();
+        }
+
+        private void List_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            time = e.Position;
+            SetAlarm(sentAt);
+        }
+
+        private void SetAlarm(DateTime sentAt)
+        {
+            Intent i = new Intent(AlarmClock.ActionSetAlarm);
+            TimeSpan span = sentAt.TimeOfDay;
+            span = span.Subtract(TimeSpan.FromMinutes(AvailableTime[time]));
+            i.PutExtra(AlarmClock.ExtraHour, span.Hours);
+            i.PutExtra(AlarmClock.ExtraMinutes, span.Minutes);
+            i.PutExtra(AlarmClock.ExtraSkipUi, true);
+            i.PutExtra(AlarmClock.ExtraMessage, Resources.GetString(Resource.String.app_name) + " " + AvailableTime[time].ToString() + " " + Resources.GetString(Resource.String.mins) + " " + Resources.GetString(Resource.String.Left));
+            i.PutExtra(AlarmClock.ExtraVibrate, true);
+
+            StartActivity(i);
+            alertDialog.Dismiss();
         }
     }
 }

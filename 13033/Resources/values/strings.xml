@@ -20,7 +20,7 @@
   <string name="SmsNotSupportedException">Not Supported</string>
 
   <string name="Attention">Attention</string>
-  <string name="AttentionMessage">Your message was sent successfully. Please make sure that you have received an answer from 13033 to go out. Note that this message will be valid after the response from 13033 until: </string>
+  <string name="AttentionMessage">Please make sure that you have received an answer from 13033 to go out. Note that this message will be valid after the response from 13033 until: </string>
   <string name="MessagesOverload">You are about to exceed the maximum amount of messages sent to 13033 within 24 hours. Are you sure you want to proceed? In case you don\'t receive a response from 13033 when you have exceeded the maximum amount of messages sent then the service has rejected your request and note that the application has nothing to do with it.</string>
 
   <string name="SmsFailed">Oops, something went wrong and your sms wasn\'t sent</string>
